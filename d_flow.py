@@ -81,7 +81,7 @@ llm = ChatGoogleGenerativeAI(
     max_retries=2,
 )
 
-# Only show button and trigger generation if a user has typed a prompt
+# hey youuu
 if other_additional_prompt:
     if st.button("Generate Templates"):
         formatted_prompt_2 = prompt_2.format(reference_templates=str(list_no))
@@ -126,6 +126,7 @@ if style == prompts[style]:
 
 
 """
+
 def prompts():
  prompts = {
         "modern": f"""
