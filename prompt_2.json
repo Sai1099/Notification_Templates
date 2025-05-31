@@ -1,0 +1,5 @@
+{
+  "_type": "prompt",
+  "input_variables": ["reference_templates"],
+  "template": "Using the following reference notification templates, generate engaging and mobile-optimized notification templates. Each template must include a distinct Message Title and Message Body.\n\n**Guidelines:**\n- **Message Title**: Max 30 characters; catchy and attention-grabbing\n- **Message Body**: Max 100 characters; concise, persuasive, and action-driven\n- Use relevant emojis to boost engagement\n- Convey urgency or a strong value proposition\n- Ensure readability on small mobile screens\n- Include a clear call-to-action (CTA)\n\n**Format for each template:**\nTemplate X:\nMessage Title: [Insert title]\nMessage Body: [Insert body]\n\nReference templates: {reference_templates}\n\nNow generate the required number of mobile-friendly notification templates. The number will be specified in the message following this prompt."
+}
