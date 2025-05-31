@@ -3,5 +3,4 @@ dotenv
 pandas
 pandasql
 langchain
-json
 streamlit 
