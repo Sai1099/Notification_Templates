@@ -240,7 +240,8 @@ with d_rig:
            
             
             image_editable = ImageDraw.Draw(image)
-            text_path = r'Playfair_Display\static\PlayfairDisplay-Bold.ttf'
+
+            text_path = 'Playfair_Display/static/PlayfairDisplay-Bold.ttf'
             img_width,img_height = image.size
             text_ratio = 0.15
             text_size = int(text_ratio * img_height)
