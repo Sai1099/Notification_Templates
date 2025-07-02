@@ -27,7 +27,7 @@ if "img_btn_clicked" not in st.session_state:
     st.session_state.img_btn_clicked = False
 if "img_already_generated" not in st.session_state:
     st.session_state.img_already_generated = False
-data_driv_df = pd.read_csv("C:/Users/chsai/OneDrive/Desktop/image_generation/Notification_Templates/banner_data.csv")
+data_driv_df = pd.read_csv("banner_data.csv")
 #Select * from data_deiv_df 
 main_top_df = (
     data_driv_df.sort_values(by="Total clicks", ascending=False)
