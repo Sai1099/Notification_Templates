@@ -1,0 +1,14 @@
+langchain-google-genai 
+dotenv
+pandas
+pandasql
+langchain
+streamlit 
+easydev
+colormap
+opencv-python
+colorgram.py
+extcolors
+Pillow
+numpy
+requests
