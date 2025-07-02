@@ -267,7 +267,7 @@ with d_rig:
             text_color_rgb = tuple(int(text_color_hex[i:i+2], 16) for i in (1, 3, 5))
       
             image_editable.text((x, y), input_text, text_color_rgb, font=text_font)
-            logo_path = "C:/Users/chsai/OneDrive/Desktop/image_generation/Notification_Templates/Bajaj Finserv.png"
+            logo_path = "Bajaj Finserv.png"
             image_width,image_height = image.size
             with open(logo_path,"rb") as file:
                logo = BytesIO(file.read())
