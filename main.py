@@ -10,7 +10,7 @@ import requests
 from PIL import Image,ImageOps,ImageDraw,ImageFont
 from io import BytesIO
 
-
+from urllib.parse import quote_plus 
 
 
 
@@ -201,16 +201,44 @@ with d_rig:
        st.text_area("Generated Prompt:", json_c, height=200)
     st.divider()
     if 'json_c' in st.session_state:
-      randomgen = np.random.randint(1,100000)
-      promptt = st.session_state.get("json_c")
-      prompt = "Generate A Nice Serenre of the mountains and the costal road full of greenary and light rain the biggest car rally is going to happen a 8k image "
-      resp = requests.get(f"https://nihalgazi-optimflux.hf.space/?prompt={promptt}&width=1280&height=720&seed={randomgen}")
-      import tempfile
-      with tempfile.NamedTemporaryFile(delete=False,suffix=".png") as tmpfile:
-          tmpfile.write(resp.content)
-          file_name = tmpfile.name
-  
-      st.session_state.image_path = file_name
+        randomgen = np.random.randint(1, 100000)
+        promptt = st.session_state.get("json_c")
+        
+        try:
+            with st.spinner("Generating image..."):
+                resp = requests.get(
+                    f"https://nihalgazi-optimflux.hf.space/?prompt={promptt}&width=1280&height=720&seed={randomgen}",
+                    timeout=30
+                )
+                resp.raise_for_status()  # Raises an HTTPError for bad responses
+                
+                # Check if response contains image data
+                if resp.headers.get('content-type', '').startswith('image/'):
+                    # Create temporary file
+                    with tempfile.NamedTemporaryFile(delete=False, suffix=".png") as tmpfile:
+                        tmpfile.write(resp.content)
+                        file_name = tmpfile.name
+                    
+                    # Verify the image can be opened
+                    try:
+                        test_image = Image.open(file_name)
+                        test_image.verify()  # Verify it's a valid image
+                        st.session_state.image_path = file_name
+                        st.session_state.img_already_generated = True
+                    except Exception as img_error:
+                        st.error(f"Generated file is not a valid image: {str(img_error)}")
+                        if os.path.exists(file_name):
+                            os.unlink(file_name)
+                else:
+                    st.error("API did not return image data. Response content type: " + resp.headers.get('content-type', 'unknown'))
+                    st.text("Response content preview:")
+                    st.text(resp.text[:500])
+                    
+        except requests.exceptions.RequestException as e:
+            st.error(f"Error calling image generation API: {str(e)}")
+        except Exception as e:
+            st.error(f"Unexpected error during image generation: {str(e)}")
+
 
       
     if "image_path" in st.session_state and st.session_state.image_path:
