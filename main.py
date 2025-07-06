@@ -184,7 +184,7 @@ with d_rig:
     os.environ["GOOGLE_API_KEY"] = "AIzaSyBRis98QWTre57ghQ4xsHA9FLQzx8ZWODE"
     llm = ChatGoogleGenerativeAI(
                                 model="gemini-2.0-flash",
-                                temperature=0,
+                                temperature=3,
                                 max_tokens=None,
                                 timeout=None,
                                 max_retries=2,
