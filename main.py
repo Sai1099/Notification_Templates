@@ -235,9 +235,9 @@ with d_rig:
                     st.text(resp.text[:500])
                     
         except requests.exceptions.RequestException as e:
-            st.error(f"Error calling image generation API: {str(e)}")
+            st.error(f"Error calling image generation API: {resp.content}")
         except Exception as e:
-            st.error(f"Unexpected error during image generation: {str(e)}")
+            st.error(f"Unexpected error during image generation: {resp.content}")
 
 
       
