@@ -1,0 +1,5 @@
+{
+    "_type": "prompt",
+    "input_variables": ["input_msg"],
+    "template": "You are the best data classifier. Extract the following parameters from the user input and return them in JSON format:\n- daY_param: number of days (default: 30)\n- no_of_temp: number of templates needed (default: 5)\n- bussiness_type_param: business type (default: 'pl')\n\nReturn only JSON with these exact key names. Example format:\n{{\n  \"daY_param\": 30,\n  \"no_of_temp\": 5,\n  \"bussiness_type_param\": \"pl\"\n}}\n\nUser input: {input_msg}"
+}

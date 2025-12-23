@@ -1,0 +1,7 @@
+langchain-google-genai 
+getpass
+dotenv
+pandas
+pandasql
+langchain
+json
